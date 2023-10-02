@@ -26,6 +26,10 @@ public class TrainingDescriptionService {
         return trainingDescriptionRepository.findById(id);
     }
 
+    public void deleteById(Long id) {
+        trainingDescriptionRepository.deleteById(id);
+    }
+
     public TrainingDescription insert(TrainingDescription trainingDescription) {
         if (trainingDescription.getId() != null) {
             throw new IllegalArgumentException("ID should be null when adding");

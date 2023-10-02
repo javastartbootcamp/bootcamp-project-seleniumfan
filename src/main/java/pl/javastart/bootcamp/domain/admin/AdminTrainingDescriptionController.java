@@ -51,6 +51,12 @@ public class AdminTrainingDescriptionController {
         }
     }
 
+    @GetMapping("/{id}/usun")
+    public String deleteDescription(@PathVariable Long id) {
+        trainingDescriptionService.deleteById(id);
+        return "redirect:/admin/opisy";
+    }
+
     @PostMapping("/edytuj")
     public String editDescription(TrainingDescription trainingDescription) {
         trainingDescriptionService.update(trainingDescription);

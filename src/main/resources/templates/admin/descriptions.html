@@ -22,6 +22,7 @@
             <th>Nazwa szkolenia</th>
             <th>Zobacz</th>
             <th>Edytuj</th>
+            <th>Usuń</th>
         </tr>
         </thead>
         <tbody>
@@ -32,6 +33,10 @@
             </td>
             <td>
                 <a th:href="'/admin/opisy/' + ${description.id} + '/edytuj'">Edytuj</a>
+            </td>
+            <td>
+                <a th:if="${#lists.isEmpty(description.trainings)}" th:href="'/admin/opisy/' + ${description.id} + '/usun'">Usuń</a>
+                <span th:if="${!#lists.isEmpty(description.trainings)}" style="color: #888; pointer-events: none;">Usuń</span>
             </td>
         </tr>
 
