@@ -196,6 +196,15 @@
             <column name="base_repository_url" value="http://git.javastart.pl/zadania-automat/oop_movie_fail" />
         </insert>
 
+        <insert tableName="task">
+            <column name="id" value="5"/>
+            <column name="name" value="Naprawa programu filmy"/>
+            <column name="sort_order" value="100"/>
+            <column name="tags" value="java"/>
+            <column name="content" valueClobFile="./task/task_5.html"/>
+            <column name="points" value="1"/>
+        </insert>
+
         <loadData file="db/testdata/task/task.csv"
                   separator=";"
                   tableName="task"/>
@@ -262,10 +271,52 @@
             <column name="lesson_links" valueClobFile="./lesson/lesson_lesson_links_1.txt"/>
         </insert>
 
+        <insert tableName="lesson">
+            <column name="id">8</column>
+            <column name="number">2</column>
+            <column name="title">Druga lekcja w szablonie</column>
+            <column name="video_links" valueClobFile="./lesson/lesson_video_links_1.txt"/>
+            <column name="lesson_links" valueClobFile="./lesson/lesson_lesson_links_2.txt"/>
+        </insert>
+
+        <insert tableName="lesson">
+            <column name="id">9</column>
+            <column name="number">3</column>
+            <column name="title">Trzecia lekcja w szablonie</column>
+            <column name="video_links" valueClobFile="./lesson/lesson_video_links_1.txt"/>
+            <column name="lesson_links" valueClobFile="./lesson/lesson_lesson_links_3.txt"/>
+        </insert>
+
+        <insert tableName="lesson">
+            <column name="id">10</column>
+            <column name="number">4</column>
+            <column name="title">Czwarta lekcja w szablonie</column>
+            <column name="video_links" valueClobFile="./lesson/lesson_video_links_1.txt"/>
+            <column name="lesson_links" valueClobFile="./lesson/lesson_lesson_links_4.txt"/>
+        </insert>
+
         <insert tableName="training_template_lesson">
             <column name="number">1</column>
             <column name="training_template_id">1</column>
             <column name="lesson_id">7</column>
+        </insert>
+
+        <insert tableName="training_template_lesson">
+            <column name="number">2</column>
+            <column name="training_template_id">1</column>
+            <column name="lesson_id">8</column>
+        </insert>
+
+        <insert tableName="training_template_lesson">
+            <column name="number">3</column>
+            <column name="training_template_id">1</column>
+            <column name="lesson_id">9</column>
+        </insert>
+
+        <insert tableName="training_template_lesson">
+            <column name="number">4</column>
+            <column name="training_template_id">1</column>
+            <column name="lesson_id">10</column>
         </insert>
 
         <insert tableName="lesson_exercise">
