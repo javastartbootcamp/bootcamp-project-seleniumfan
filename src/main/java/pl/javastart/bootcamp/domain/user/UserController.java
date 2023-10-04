@@ -1,5 +1,6 @@
 package pl.javastart.bootcamp.domain.user;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,9 +14,11 @@ import java.util.UUID;
 public class UserController {
 
     private UserService userService;
+    private PasswordEncoder passwordEncoder;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("/login")
@@ -91,7 +94,7 @@ public class UserController {
                                  @RequestParam String newPassword2,
                                  Principal principal, Model model) {
 
-        if (!("{noop}" + currentPassword).equals(userService.getPassword(principal.getName()))) {
+        if (!passwordEncoder.matches(currentPassword, userService.getPassword(principal.getName()))) {
             model.addAttribute("message", "Obecne hasło jest nieprawidłowe");
             return "account/changePassword";
         }
