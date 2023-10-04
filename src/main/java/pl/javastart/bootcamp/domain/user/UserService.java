@@ -107,6 +107,11 @@ public class UserService {
         userRepository.save(user);
     }
 
+    public String getPassword(String email) {
+        User user = userRepository.findByEmail(email).orElseThrow(ResourceNotFoundException::new);
+        return user.getPassword();
+    }
+
     public User findByEmailOrThrow(String email) {
         return userRepository.findByEmail(email).orElseThrow(ResourceNotFoundException::new);
     }
