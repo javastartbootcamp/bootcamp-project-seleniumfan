@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/admin}">
+<body>
+<div layout:fragment="admin-content" class="container">
+
+    <h2>Faq</h2>
+    <a href="/admin/faq/dodaj">Dodaj nowy faq</a>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Pytanie</th>
+            <th>Odpowiedź</th>
+            <th>Edycja</th>
+            <th>Usuń</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="f: ${faq}">
+            <td th:text="${f.question}"></td>
+            <td th:text="${f.answer}"></td>
+            <td>
+                <a th:href="'/admin/faq/' + ${f.id} + '/edytuj'">
+                    <button class="btn btn-primary px-3 m-0">
+                        <i class="fa fa-edit"></i> Edytuj
+                    </button>
+                </a>
+            </td>
+            <td>
+                <a th:href="'/admin/faq/' + ${f.id} + '/usun'">
+                    <button class="btn btn-primary px-3 m-0">
+                        <i class="fa trash"></i> Usuń
+                    </button>
+                </a>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

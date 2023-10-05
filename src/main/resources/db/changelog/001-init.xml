@@ -169,6 +169,16 @@
 
         </createTable>
 
+        <createTable tableName="faq">
+            <column name="id" autoIncrement="true" type="bigint">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+
+            <column name="question" type="varchar(2000)"/>
+            <column name="answer" type="varchar(2000)"/>
+
+        </createTable>
+
         <createTable tableName="document">
             <column name="id" autoIncrement="true" type="bigint">
                 <constraints nullable="false" primaryKey="true"/>
