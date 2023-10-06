@@ -5,6 +5,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.javastart.bootcamp.domain.training.lesson.lessontask.LessonTaskService;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Controller
 @RequestMapping("/admin/zadania")
 public class AdminTaskController {
@@ -25,6 +29,7 @@ public class AdminTaskController {
     public String previewTask(@PathVariable Long id, Model model) {
         Task task = taskService.findByIdOrThrow(id);
         model.addAttribute("task", task);
+        model.addAttribute("embeddedLinks", taskService.mapToEmbed(task.getSolutionVideo()));
         return "admin/task/task";
     }
 

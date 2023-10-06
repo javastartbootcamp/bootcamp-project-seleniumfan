@@ -11,7 +11,9 @@ import pl.javastart.bootcamp.domain.training.lesson.lessontask.LessonTask;
 import pl.javastart.bootcamp.domain.training.lesson.lessontask.LessonTaskService;
 
 import java.time.LocalTime;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequestMapping("/admin/szablony")
 @Controller
@@ -79,6 +81,10 @@ public class AdminTrainingTemplateController {
         TrainingTemplateLesson trainingTemplateLesson = trainingTemplateService.findTemplateLessonByIdOrThrow(templateLessonId);
         model.addAttribute("templateLesson", trainingTemplateLesson);
         model.addAttribute("topics", topicService.findAll());
+        List<String> embeddedLinks = Arrays.stream(trainingTemplateLesson.getLesson().getVideoLinks().split("\n"))
+                .map(trainingTemplateService::mapToEmbed)
+                .collect(Collectors.toList());
+        model.addAttribute("embeddedLinks", embeddedLinks);
         return "admin/template/lesson/templateLesson";
     }
 

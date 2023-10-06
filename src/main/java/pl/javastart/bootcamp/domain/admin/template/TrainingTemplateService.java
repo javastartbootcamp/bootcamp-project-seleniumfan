@@ -72,6 +72,18 @@ public class TrainingTemplateService {
         dto.setTitle(templateLesson.getLesson().getTitle());
     }
 
+    public String mapToEmbed(String link) {
+        if (link.startsWith("http")) {
+            if (link.contains("youtu.be")) {
+                return link.replace("youtu.be/", "www.youtube.com/embed/");
+            } else {
+                return link.replace("watch?v=", "embed/");
+            }
+        } else {
+            return "https://www.youtube.com/embed/" + link;
+        }
+    }
+
     public TrainingTemplateLessonDto createTemplateLessonForTemplateId(Long templateId) {
         TrainingTemplateLessonDto dto = new TrainingTemplateLessonDto();
         dto.setTrainingTemplateId(templateId);

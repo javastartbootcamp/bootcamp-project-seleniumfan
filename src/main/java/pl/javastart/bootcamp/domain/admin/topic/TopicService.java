@@ -28,6 +28,18 @@ public class TopicService {
         topicRepository.save(topic);
     }
 
+    public String mapToEmbed(String link) {
+        if (link.startsWith("http")) {
+            if (link.contains("youtu.be")) {
+                return link.replace("youtu.be/", "www.youtube.com/embed/");
+            } else {
+                return link.replace("watch?v=", "embed/");
+            }
+        } else {
+            return "https://www.youtube.com/embed/" + link;
+        }
+    }
+
     public Topic prepareTopicWithSortOrder() {
         Topic topic = new Topic();
         List<Topic> all = findAll();

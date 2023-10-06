@@ -37,8 +37,8 @@
     </div>
 
     <div th:if="${!#strings.isEmpty(templateLesson.lesson.videoLinks)}"
-         th:each="video: ${templateLesson.lesson.videoLinks.split('\n')}">
-        <iframe width="560" height="315" th:src="|https://www.youtube.com/embed/${video}|" frameborder="0"
+         th:each="video: ${embeddedLinks}">
+        <iframe width="560" height="315" th:src="${video}" frameborder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
     </div>
