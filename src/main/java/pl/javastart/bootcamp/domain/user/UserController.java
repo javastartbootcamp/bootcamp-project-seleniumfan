@@ -94,7 +94,7 @@ public class UserController {
                                  @RequestParam String newPassword2,
                                  Principal principal, Model model) {
 
-        if (!passwordEncoder.matches(currentPassword, userService.getPassword(principal.getName()))) {
+        if (userService.checkPassword(currentPassword, principal.getName())) {
             model.addAttribute("message", "Obecne hasło jest nieprawidłowe");
             return "account/changePassword";
         }

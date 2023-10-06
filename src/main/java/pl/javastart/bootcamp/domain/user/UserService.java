@@ -14,6 +14,7 @@ import pl.javastart.bootcamp.domain.user.role.UserRole;
 import pl.javastart.bootcamp.mail.MailService;
 
 import javax.transaction.Transactional;
+import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -184,5 +185,9 @@ public class UserService {
     public void updateGithubUsername(String name, String githubUsername) {
         User user = findByEmailOrThrow(name);
         user.setGithubUsername(githubUsername);
+    }
+
+    public boolean checkPassword(String password, String email) {
+        return !passwordEncoder.matches(password, getPassword(email));
     }
 }
