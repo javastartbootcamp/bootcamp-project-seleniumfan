@@ -73,6 +73,10 @@ public class LessonService {
         return lessonRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
     }
 
+    public void deleteById(Long id) {
+        lessonRepository.deleteById(id);
+    }
+
     public List<LessonWithPointsDto> findLessonsForTrainingWithUser(Long trainingId, User user) {
         Signup signup = signupService.findSignupForUserAndTrainingId(user, trainingId);
 

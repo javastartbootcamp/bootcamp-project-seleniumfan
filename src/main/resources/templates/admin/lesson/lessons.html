@@ -17,7 +17,8 @@
     <h4>
         Lekcje
         <a th:href="|/admin/lekcje/dodaj?trainingId=${training.id}|"><i class="fa fa-plus"></i></a>
-        <a th:href="|/admin/lekcje/kopiuj?trainingId=${training.id}|" title="Kopiuj z szablonu"><i class="fa fa-copy"></i></a>
+        <a th:href="|/admin/lekcje/kopiuj?trainingId=${training.id}|" title="Kopiuj z szablonu"><i
+                class="fa fa-copy"></i></a>
     </h4>
 
     <table class="table table-hover">
@@ -36,9 +37,17 @@
             <td th:text="${lesson.title}"></td>
             <td th:text="${#temporals.format(lesson.lessonDate, 'yyyy-MM-dd')}"></td>
             <td>
-                <a th:if="${lesson.visible}" th:href="|/admin/lekcje/${lesson.id}/widocznosc?pokaz=false|" title="Ukryj"><i class="far fa-lg fa-eye"></i></a>
-                <a th:if="${!lesson.visible}" th:href="|/admin/lekcje/${lesson.id}/widocznosc?pokaz=true|" title="Pokaż"><i class="far fa-lg fa-eye-slash"></i></a>
+                <a th:if="${lesson.visible}" th:href="|/admin/lekcje/${lesson.id}/widocznosc?pokaz=false|"
+                   title="Ukryj"><i class="far fa-lg fa-eye"></i></a>
+                <a th:if="${!lesson.visible}" th:href="|/admin/lekcje/${lesson.id}/widocznosc?pokaz=true|"
+                   title="Pokaż"><i class="far fa-lg fa-eye-slash"></i></a>
                 <a th:href="|/admin/lekcje/${lesson.id}/edytuj|" title="Edytuj"><i class="far fa-lg fa-edit"></i></a>
+
+                <a th:if="${#lists.isEmpty(lesson.lessonTasks)}" th:href="|/admin/lekcje/${lesson.id}/usun|"
+                   title="Usuń"><i class="far fa-lg fa-trash-alt"></i></a>
+                <a th:if="${!#lists.isEmpty(lesson.lessonTasks)}" th:href="|/admin/szkolenia/${lesson.getTraining().getId()}/lekcje|" style="color: #888; pointer-events: none;">
+                    <i class="far fa-lg fa-trash-alt"></i>
+                </a>
             </td>
         </tr>
         </tbody>

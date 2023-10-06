@@ -82,6 +82,13 @@ public class AdminLessonController {
         return "admin/lesson/lessonEdit";
     }
 
+    @GetMapping("/admin/lekcje/{id}/usun")
+    public String deleteLessonForm(@PathVariable Long id) {
+        Lesson lesson = lessonService.findByIdOrThrow(id);
+        lessonService.deleteById(id);
+        return "redirect:/admin/szkolenia/" + lesson.getTraining().getId() + "/lekcje";
+    }
+
     @PostMapping("/admin/lekcje/edytuj")
     public String saveLesson(Lesson lesson) {
         lessonService.save(lesson);
