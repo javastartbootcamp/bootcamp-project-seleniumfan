@@ -16,6 +16,11 @@
                   separator=";"
                   tableName="user_role"/>
 
+        <insert tableName="training_template">
+            <column name="id">1</column>
+            <column name="name">Bootcamp Junior Java Developer</column>
+        </insert>
+
         <insert tableName="training_description">
             <column name="id" value="1"/>
             <column name="title" value="Bootcamp Junior Java Developer"/>
@@ -157,6 +162,38 @@
             <column name="visible" valueBoolean="true"/>
         </insert>
 
+        <insert tableName="lesson">
+            <column name="id">7</column>
+            <column name="number">1</column>
+            <column name="title">Pierwsza lekcja w szablonie</column>
+            <column name="video_links" valueClobFile="./lesson/lesson_video_links_1.txt"/>
+            <column name="lesson_links" valueClobFile="./lesson/lesson_lesson_links_1.txt"/>
+        </insert>
+
+        <insert tableName="lesson">
+            <column name="id">8</column>
+            <column name="number">2</column>
+            <column name="title">Druga lekcja w szablonie</column>
+            <column name="video_links" valueClobFile="./lesson/lesson_video_links_1.txt"/>
+            <column name="lesson_links" valueClobFile="./lesson/lesson_lesson_links_6.txt"/>
+        </insert>
+
+        <insert tableName="lesson">
+            <column name="id">9</column>
+            <column name="number">3</column>
+            <column name="title">Trzecia lekcja w szablonie</column>
+            <column name="video_links" valueClobFile="./lesson/lesson_video_links_1.txt"/>
+            <column name="lesson_links" valueClobFile="./lesson/lesson_lesson_links_3.txt"/>
+        </insert>
+
+        <insert tableName="lesson">
+            <column name="id">10</column>
+            <column name="number">4</column>
+            <column name="title">Czwarta lekcja w szablonie</column>
+            <column name="video_links" valueClobFile="./lesson/lesson_video_links_1.txt"/>
+            <column name="lesson_links" valueClobFile="./lesson/lesson_lesson_links_5.txt"/>
+        </insert>
+
         <insert tableName="task">
             <column name="id" value="1"/>
             <column name="name" value="Pierwsze interakcje z gitem"/>
@@ -196,6 +233,33 @@
             <column name="base_repository_url" value="http://git.javastart.pl/zadania-automat/oop_movie_fail" />
         </insert>
 
+        <insert tableName="task">
+            <column name="id" value="5"/>
+            <column name="name" value="Drinki"/>
+            <column name="sort_order" value="100"/>
+            <column name="tags" value="java"/>
+            <column name="content" valueClobFile="./task/task_5.html"/>
+            <column name="points" value="1"/>
+        </insert>
+
+        <insert tableName="task">
+            <column name="id" value="6"/>
+            <column name="name" value="Informacje o produktach (zmienne)"/>
+            <column name="sort_order" value="100"/>
+            <column name="tags" value="java"/>
+            <column name="content" valueClobFile="./task/task_6.html"/>
+            <column name="points" value="1"/>
+        </insert>
+
+        <insert tableName="task">
+            <column name="id" value="7"/>
+            <column name="name" value="Tworzenie klas i obiektów z Twojego otoczenia"/>
+            <column name="sort_order" value="100"/>
+            <column name="tags" value="java"/>
+            <column name="content" valueClobFile="./task/task_7.html"/>
+            <column name="points" value="1"/>
+        </insert>
+
         <loadData file="db/testdata/task/task.csv"
                   separator=";"
                   tableName="task"/>
@@ -233,6 +297,45 @@
             <column name="deadline" valueDate="2020-10-11 23:59:00"/>
         </insert>
 
+        <insert tableName="lesson_task">
+            <column name="id" value="4"/>
+            <column name="lesson_id" value="8"/>
+            <column name="task_id" value="5"/>
+            <column name="number" value="1"/>
+            <column name="is_mandatory" valueBoolean="true"/>
+            <column name="deadline_days" value="1" />
+            <column name="deadline_hour" value="13:59" />
+        </insert>
+
+        <insert tableName="lesson_task">
+            <column name="id" value="5"/>
+            <column name="lesson_id" value="9"/>
+            <column name="task_id" value="6"/>
+            <column name="number" value="1"/>
+            <column name="is_mandatory" valueBoolean="true"/>
+            <column name="deadline_days" value="2" />
+            <column name="deadline_hour" value="20:00" />
+        </insert>
+
+        <insert tableName="lesson_task">
+            <column name="id" value="6"/>
+            <column name="lesson_id" value="10"/>
+            <column name="task_id" value="7"/>
+            <column name="number" value="1"/>
+            <column name="is_mandatory" valueBoolean="true"/>
+            <column name="deadline_days" value="1" />
+            <column name="deadline_hour" value="23:39" />
+        </insert>
+
+        <insert tableName="lesson_task">
+            <column name="lesson_id" value="7"/>
+            <column name="task_id" value="1"/>
+            <column name="number" value="1" />
+            <column name="is_mandatory" value="true" />
+            <column name="deadline_days" value="1" />
+            <column name="deadline_hour" value="23:59" />
+        </insert>
+
         <loadData file="db/testdata/user_task.csv"
                   separator=";"
                   tableName="user_task"/>
@@ -249,37 +352,33 @@
             <column name="lesson_links" valueClobFile="./topic/topic_lesson_links_1.txt"/>
         </insert>
 
-        <insert tableName="training_template">
-            <column name="id">1</column>
-            <column name="name">Bootcamp Junior Java Developer</column>
-        </insert>
-
-        <insert tableName="lesson">
-            <column name="id">7</column>
-            <column name="number">1</column>
-            <column name="title">Pierwsza lekcja w szablonie</column>
-            <column name="video_links" valueClobFile="./lesson/lesson_video_links_1.txt"/>
-            <column name="lesson_links" valueClobFile="./lesson/lesson_lesson_links_1.txt"/>
-        </insert>
-
         <insert tableName="training_template_lesson">
             <column name="number">1</column>
             <column name="training_template_id">1</column>
             <column name="lesson_id">7</column>
         </insert>
 
+        <insert tableName="training_template_lesson">
+            <column name="number">2</column>
+            <column name="training_template_id">1</column>
+            <column name="lesson_id">8</column>
+        </insert>
+
+        <insert tableName="training_template_lesson">
+            <column name="number">3</column>
+            <column name="training_template_id">1</column>
+            <column name="lesson_id">9</column>
+        </insert>
+
+        <insert tableName="training_template_lesson">
+            <column name="number">4</column>
+            <column name="training_template_id">1</column>
+            <column name="lesson_id">10</column>
+        </insert>
+
         <insert tableName="lesson_exercise">
             <column name="lesson_id" value="7"/>
             <column name="task_id" value="1"/>
-        </insert>
-
-        <insert tableName="lesson_task">
-            <column name="lesson_id" value="7"/>
-            <column name="task_id" value="1"/>
-            <column name="number" value="1" />
-            <column name="is_mandatory" value="true" />
-            <column name="deadline_days" value="1" />
-            <column name="deadline_hour" value="23:59" />
         </insert>
 
     </changeSet>
