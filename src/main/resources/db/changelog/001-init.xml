@@ -169,6 +169,16 @@
 
         </createTable>
 
+        <createTable tableName="faq">
+            <column name="id" autoIncrement="true" type="bigint">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+
+            <column name="question" type="${textType}"/>
+            <column name="answer" type="${textType}"/>
+
+        </createTable>
+
         <createTable tableName="document">
             <column name="id" autoIncrement="true" type="bigint">
                 <constraints nullable="false" primaryKey="true"/>

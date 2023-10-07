@@ -131,6 +131,30 @@
             <column name="content" valueClobFile="./agreement.html"/>
         </insert>
 
+        <insert tableName="faq">
+            <column name="id" value="1"/>
+            <column name="question" value="Czy po bootcampie Junior Java Developer zdobędę pracę?"/>
+            <column name="answer" value="To zależy głównie od Ciebie. My jesteśmy 'tylko' firmą szkoleniową i nie uczestniczymy w procesie
+                    rekrutacyjnym. Różni pracodawcy mają różne wymagania od kandydatów. Podczas bootcampu uczymy
+                    najpopularniejszych technologii i tworzymy świetną podstawę do dalszego rozwoju. Są przypadki, że
+                    osoby
+                    znajdowały pracę już miesiąc po szkoleniu. Są to jednak przypadki bardzo ciężkiej i intensywnej
+                    pracy
+                    przez cały okres bootcampu."/>
+        </insert>
+
+        <insert tableName="faq">
+            <column name="id" value="2"/>
+            <column name="question" value="Czy dajecie gwarancję pracy? Inne firmy dają."/>
+            <column name="answer" value="Nie. Zdajemy sobie sprawę, że inne firmy oferują 'gwarancję pracy.' Problem w tym, że ta gwarancja
+                    często
+                    obarczona jest szeregiem wymagań: egzaminy podczas szkolenia, przygotowanie CV, wysyłanie iluśtam CV
+                    tygodniowo, zdobycie statusu 'absolwenta' itd. Moglibyśmy robić podobnie, ale osoby które dobrze
+                    radzą
+                    sobie podczas szkolenia nie mają problemów ze zdobyciem pracy po szkoleniu. No i gwarancja pracy
+                    kosztuje: konkurencja ma ceny bootcampów około 2 razy wyższe od naszych."/>
+        </insert>
+
         <insert tableName="opinion">
             <column name="id" value="1"/>
             <column name="text" valueClobFile="./opinion/opinion_1.html"/>
