@@ -161,6 +161,11 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
+    public boolean isUserAdmin(User user) {
+        return user.getRoles().stream()
+                .anyMatch(role -> role.getRole().equals(Role.ROLE_ADMIN));
+    }
+
     public boolean isCurrentUserAdmin() {
         SecurityContext context = SecurityContextHolder.getContext();
         Authentication authentication = context.getAuthentication();
