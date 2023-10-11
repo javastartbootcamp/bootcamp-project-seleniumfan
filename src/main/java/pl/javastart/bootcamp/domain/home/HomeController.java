@@ -16,12 +16,12 @@ import java.util.List;
 
 @Controller
 public class HomeController {
-
     private TrainingService trainingService;
     private OpinionService opinionService;
 
     private AdminTrainerService adminTrainerService;
     private FaqService faqService;
+    
     public HomeController(TrainingService trainingService, OpinionService opinionService, AdminTrainerService adminTrainerService, FaqService faqService) {
         this.trainingService = trainingService;
         this.opinionService = opinionService;
