@@ -8,12 +8,15 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.javastart.bootcamp.config.notfound.ResourceNotFoundException;
+import pl.javastart.bootcamp.domain.signup.Signup;
 import pl.javastart.bootcamp.domain.signup.SignupService;
+import pl.javastart.bootcamp.domain.signup.log.SignupLogItemService;
 import pl.javastart.bootcamp.domain.user.role.Role;
 import pl.javastart.bootcamp.domain.user.role.UserRole;
 import pl.javastart.bootcamp.mail.MailService;
 
 import javax.transaction.Transactional;
+import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -26,12 +29,14 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
     private MailService mailService;
     private SignupService signupService;
+    private SignupLogItemService signupLogItemService;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, MailService mailService, SignupService signupService) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, MailService mailService, SignupService signupService, SignupLogItemService signupLogItemService) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.mailService = mailService;
         this.signupService = signupService;
+        this.signupLogItemService = signupLogItemService;
     }
 
     @Transactional
@@ -91,10 +96,19 @@ public class UserService {
         }
     }
 
+    @Transactional
     public void deleteAccountByHimself(String email) {
         User user = userRepository.findByEmail(email).orElseThrow(ResourceNotFoundException::new);
+        Signup signup = signupService.findByUserId(user.getId()).orElseThrow(ResourceNotFoundException::new);
+        signupLogItemService.deleteSignupLogItem(signup.getId());
+        signupService.deleteSignup(signup.getId());
         deleteAccount(user);
+
         mailService.sendAccountDeletedByUserToAdminEmail(email);
+    }
+
+    public void deleteSignupLogItem(Long signupUserId) {
+        signupLogItemService.deleteSignupLogItem(signupUserId);
     }
 
     public void deleteAccount(User user) {
@@ -105,6 +119,11 @@ public class UserService {
         User user = userRepository.findByEmail(email).orElseThrow(ResourceNotFoundException::new);
         user.setPassword(passwordEncoder.encode(newPassword));
         userRepository.save(user);
+    }
+
+    public String getPassword(String email) {
+        User user = userRepository.findByEmail(email).orElseThrow(ResourceNotFoundException::new);
+        return user.getPassword();
     }
 
     public User findByEmailOrThrow(String email) {
@@ -179,5 +198,9 @@ public class UserService {
     public void updateGithubUsername(String name, String githubUsername) {
         User user = findByEmailOrThrow(name);
         user.setGithubUsername(githubUsername);
+    }
+
+    public boolean checkPassword(String password, String email) {
+        return !passwordEncoder.matches(password, getPassword(email));
     }
 }

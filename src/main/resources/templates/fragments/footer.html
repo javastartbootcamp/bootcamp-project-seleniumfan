@@ -11,7 +11,8 @@
                     <strong>JavaStart</strong>
                 </h6>
                 <hr class="deep-orange accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                <p>Od lat naszą misją jest nauka programowania od zupełnych podstaw. Z naszych bootcampów skorzystały już
+                <p>Od lat naszą misją jest nauka programowania od zupełnych podstaw. Z naszych bootcampów skorzystały
+                    już
                     setki osób, a z kursów internetowych tysiące. Dołącz do grona zadowolonych klientów.</p>
             </div>
             <!--/.First column-->
@@ -69,7 +70,8 @@
     <!--/.Footer Links-->
 
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <div class="footer-copyright text-center py-3">
+        <span th:text="|© ${#dates.format(#dates.createNow(), 'yyyy')} Copyright:|">© 2020 Copyright:</span>
         <a href="https://javastart.pl"> JavaStart.pl</a>
     </div>
 

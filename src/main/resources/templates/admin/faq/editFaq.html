@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/admin}">
+
+<head>
+    <title>Edycja faq</title>
+</head>
+
+<body>
+
+<div layout:fragment="admin-content" class="container">
+
+    <h2>Edycja faq</h2>
+
+    <form th:action="@{${faq.id != null ? '/admin/faq/edytuj' : '/admin/faq/dodaj'}}" method="post"
+          th:object="${faq}">
+        <input type="hidden" th:field="*{id}"/>
+
+        <label for="question">Pytanie</label>
+        <input required type="text" id="question" th:field="*{question}" class="form-control mb-4"/>
+
+        <label for="answer">Odpowiedź</label>
+        <input required type="text" id="answer" th:field="*{answer}" class="form-control mb-4"/>
+
+        <button type="submit" class="btn mb-4 orange darken-3">
+            <i class="fa fa-save pr-2" aria-hidden="true"></i>Zapisz
+        </button>
+
+    </form>
+
+</div>
+
+
+</body>
+</html>

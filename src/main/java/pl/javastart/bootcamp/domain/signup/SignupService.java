@@ -52,12 +52,20 @@ public class SignupService {
         return signupRepository.findByUser(user);
     }
 
+    public Optional<Signup> findByUserId(Long id) {
+        return signupRepository.findByUserId(id);
+    }
+
     List<Signup> findByUserAndWithAccess(User user) {
         return signupRepository.findByUserAndCanSeeContentIsTrue(user);
     }
 
     public Signup findByIdOrThrow(Long id) {
         return findById(id).orElseThrow(ReadOnlyFileSystemException::new);
+    }
+
+    public void deleteSignup(Long id) {
+        signupRepository.deleteById(id);
     }
 
     public List<Signup> findByStatus(SignupStatus status) {
