@@ -21,4 +21,8 @@ public class SignupLogItemService {
         signupLogItem.setNote(text);
         signupLogItemRepository.save(signupLogItem);
     }
+
+    public void deleteSignupLogItem(Long signupUserId) {
+        signupLogItemRepository.deleteBySignupId(signupUserId);
+    }
 }

@@ -1,5 +1,6 @@
 package pl.javastart.bootcamp.domain.user;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,9 +14,11 @@ import java.util.UUID;
 public class UserController {
 
     private UserService userService;
+    private PasswordEncoder passwordEncoder;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("/login")
@@ -86,9 +89,15 @@ public class UserController {
     }
 
     @PostMapping("/konto/zmiana-hasla")
-    public String changePassword(@RequestParam String newPassword,
+    public String changePassword(@RequestParam String currentPassword,
+                                 @RequestParam String newPassword,
                                  @RequestParam String newPassword2,
                                  Principal principal, Model model) {
+
+        if (userService.checkPassword(currentPassword, principal.getName())) {
+            model.addAttribute("message", "Obecne hasło jest nieprawidłowe");
+            return "account/changePassword";
+        }
 
         if (newPassword.length() < 8) {
             model.addAttribute("message", "Hasło powinno mieć co najmniej 8 znaków.");
