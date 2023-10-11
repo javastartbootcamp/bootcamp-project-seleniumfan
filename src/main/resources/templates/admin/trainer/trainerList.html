@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/admin}">
+
+<head>
+    <title>Lista trenerów</title>
+</head>
+
+<body>
+
+<div layout:fragment="admin-content" class="container">
+
+    <h2>Trenerzy</h2>
+    <p>Trenerzy to kluczowe osoby odpowiedzialne za prowadzenie zajęć w ramach bootcampa.<br />
+        W tej sekcji można łatwo dodawać nowych trenerów, uzupełniając ich doświadczenie oraz zdjęcie
+        Dzięki intuicyjnym narzędziom modyfikacji, aktualizowanie informacji o trenerach staje się szybkie i proste, co pozwala na bieżąco dostosowywać zawartość do aktualnych potrzeb bootcampa.
+        W przypadku zmian w zespole lub konieczności usunięcia trenera, funkcjonalność usuwania pozwala na bezproblemowe i szybkie wycofanie danych danego instruktora z systemu.</p>
+
+    <a href="/admin/trenerzy/dodaj">Dodaj nowego trenera</a>
+
+    <br/>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Imię i nazwisko</th>
+            <th>Opis</th>
+            <th>Aktualizuj</th>
+            <th>Usuń</th>
+        </tr>
+        </thead>
+        <tbody id="mytable">
+        <tr th:each="trainer: ${trainers}" class="clickable-row"
+            th:data-href="'/admin/trenerzy/' + ${trainer.id}"
+            th:data-id="${trainer.id}">
+            <td th:text="${trainer.name}"></td>
+            <td th:text="${trainer.description}"></td>
+            <td>
+                <a th:href="'/admin/trenerzy/' + ${trainer.id} + '/edytuj'">Zmień dane</a>
+            </td>
+            <td>
+                <a th:href="'/admin/trenerzy/' + ${trainer.id} + '/usun'">Usuń trenera</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div th:replace="~{fragments/scripts :: clickable-row}"></div>
+
+</div>
+
+</body>
+</html>

@@ -381,83 +381,13 @@
 
             <div class="row">
 
-                <div class="col-md trainer_column">
+                <div th:each="trainer : ${trainers}" class="col-md trainer_column">
                     <div class="author_image_container">
-                        <img src="/img/sergiusz_mazan.jpg" alt="Sergiusz" class="author_image circle_image">
+                        <img th:src="${trainer.imageUrl}" th:alt="${trainer.name}" class="author_image circle_image">
                     </div>
-                    <p class="trainer_description">
-                        <b>Sergiusz Mazan</b> to absolwent Informatyki na Politechnice Wrocławskiej. Zawodowo zajmuje
-                        się projektowaniem oraz tworzeniem systemów webowych. Programowanie jest dla niego nie tylko
-                        pracą, ale też pasją. Wolny czas spędza na poszerzaniu wiedzy i umiejętności w zakresie
-                        programowania. Chętnie pomaga oraz dzieli się wiedzą.
+                    <p class="trainer_description" th:utext="'<b>' + ${trainer.name} + '</b> ' + ${trainer.description}">
                     </p>
                 </div>
-
-                <div class="col-sm trainer_column">
-                    <div class="author_image_container">
-                        <img src="/img/marcin_paluchowski.jpg" alt="Marcin" class="author_image circle_image">
-                    </div>
-                    <p class="trainer_description">
-                        <b>Marcin Paluchowski</b> zawodowo Java Developer specjalizujący się w tworzeniu systemów
-                        webowych. Kilka lat temu ukończył szkolenie Junior Java Developer. Uczestniczył już w wielu
-                        międzynarodowych projektach, gdzie miał okazję poznać wiele różnych technologii. W pracy
-                        zajmuje się również rekrutacją oraz wdrażaniem i szkoleniem programistów.
-                        Jego pasją jest programowanie, dzięki czemu stale udoskonala swoje umiejętności z tej dziedziny.
-                        Zdobytą wiedzę z chęcią przekazuje innym.
-                    </p>
-                </div>
-
-                <div class="col-md trainer_column">
-                    <div class="author_image_container">
-                        <img src="/img/slawek.jpg" alt="Sławek" class="author_image circle_image">
-                    </div>
-                    <p class="trainer_description">
-                        <b>Sławek Ludwiczak</b> ojciec założyciel JavaStart, absolwent informatyki na Politechnice
-                        Wrocławskiej, członek Polskiego Towarzystwa Informatycznego. Specjalista i pasjonat
-                        technologii Java.
-                    </p>
-                </div>
-
-
-                <div class="col-md trainer_column">
-                    <div class="author_image_container">
-                        <img src="/img/marcin.jpg" alt="Marcin" class="author_image circle_image">
-                    </div>
-                    <p class="trainer_description">
-                        <b>Marcin Kunert</b> to doświadczony deweloper ze sporą liczbą projektów na koncie. Uczestniczył
-                        w ogromnych projektach dla wielkich korporacji, a także tworzył mniejsze aplikacje dla klientów
-                        indywidualnych. Jest krytycznie nastawiony do kiepskiego kodu. Podchodzi do życia ze sporą dawką
-                        humoru. Zaskakuje cierpliwością i nieszablonowymi przykładami
-                        podczas tłumaczenia tych prostych i bardziej zaawansowanych zagadnień.
-                    </p>
-                </div>
-
-                <div class="col-sm trainer_column">
-                    <div class="author_image_container">
-                        <img src="/img/pawel_koper.jpg" alt="Paweł" class="author_image circle_image">
-                    </div>
-                    <p class="trainer_description">
-                        <b>Paweł Koper</b> - programista z 10-letnim stażem. Pracował w wielu projektach jako Java
-                        developer oraz tech leader. W swoich projektach aktywnie bierze udział w mentoringu i upskilingu
-                        młodszych developerów. Wie co jest ważne w byciu developerem i chętnie dzieli się tą wiedzą z
-                        innymi.<br/>
-                        Sam jest pasjonatem i cały czas uczy się nowych rozwiązań i technologii.
-                    </p>
-                </div>
-
-                <div class="col-sm trainer_column">
-                    <div class="author_image_container">
-                        <img src="/img/ania.jpg" alt="Ania" class="author_image circle_image">
-                    </div>
-                    <p class="trainer_description">
-                        <b>Ania Jaskot</b> - absolwentka Politechniki Wrocławskiej, a w nie tak dalekiej przeszłości
-                        uczestniczka kursu JavaStart. Na co dzień pracuje tworząc międzynarodowe projekty. Swoje
-                        dydaktyczne szlify zdobywała na Politechnice Wrocławskiej prowadząc zajęcia z Javy. Jej pasją
-                        jest przekazywanie wiedzy i obserwowanie jak w innych rodzi się miłość do programowania.
-                        Ambitnie i z uśmiechem podchodzi do wszelkich wyzwań.
-                    </p>
-                </div>
-
             </div>
         </div>
 
