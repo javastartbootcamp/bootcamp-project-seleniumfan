@@ -29,27 +29,33 @@
             <li class="nav-item" th:if="${#httpServletRequest.requestURI != '/'}">
                 <a class="nav-link" href="/">Strona główna</a>
             </li>
-            <li class="nav-item" th:if="${#httpServletRequest.requestURI == '/' || #httpServletRequest.requestURI == '/szkolenie-testowanie'}">
+            <li class="nav-item"
+                th:if="${#httpServletRequest.requestURI == '/' || #httpServletRequest.requestURI == '/szkolenie-testowanie'}">
                 <a class="nav-link smooth-scroll" id="anchor1" href="#szkolenia">Szkolenia</a>
             </li>
-            <li class="nav-item" th:if="${#httpServletRequest.requestURI == '/' || #httpServletRequest.requestURI == '/szkolenie-testowanie'} ">
+            <li class="nav-item"
+                th:if="${#httpServletRequest.requestURI == '/' || #httpServletRequest.requestURI == '/szkolenie-testowanie'} ">
                 <a class="nav-link" href="#finansowanie">Finansowanie</a>
             </li>
             <li class="nav-item" th:if="${#httpServletRequest.requestURI == '/'}">
                 <a class="nav-link" href="#opinie">Opinie</a>
             </li>
-            <li class="nav-item" th:if="${#httpServletRequest.requestURI == '/' || #httpServletRequest.requestURI == '/szkolenie-testowanie'}">
+            <li class="nav-item"
+                th:if="${#httpServletRequest.requestURI == '/' || #httpServletRequest.requestURI == '/szkolenie-testowanie'}">
                 <a class="nav-link" href="#trainers">Trenerzy</a>
             </li>
             <li class="nav-item" th:if="${#httpServletRequest.requestURI == '/'}">
                 <a class="nav-link" href="#faq">FAQ</a>
             </li>
-            <li class="nav-item" th:if="${#httpServletRequest.requestURI == '/' || #httpServletRequest.requestURI == '/szkolenie-testowanie'}">
+            <li class="nav-item"
+                th:if="${#httpServletRequest.requestURI == '/' || #httpServletRequest.requestURI == '/szkolenie-testowanie'}">
                 <a class="nav-link" href="#kontakt">Kontakt</a>
             </li>
             <li class="nav-item">
-                <a th:if="${#httpServletRequest.requestURI == '/szkolenie-testowanie'}" class="nav-link" href="/strona/oferta-dla-firm-automatyzacja">Oferta dla firm</a>
-                <a th:unless="${#httpServletRequest.requestURI == '/szkolenie-testowanie'}" class="nav-link" href="/firmy/oferta">Oferta dla firm</a>
+                <a th:if="${#httpServletRequest.requestURI == '/szkolenie-testowanie'}" class="nav-link"
+                   href="/strona/oferta-dla-firm-automatyzacja">Oferta dla firm</a>
+                <a th:unless="${#httpServletRequest.requestURI == '/szkolenie-testowanie'}" class="nav-link"
+                   href="/firmy/oferta">Oferta dla firm</a>
             </li>
 
         </ul>
@@ -94,6 +100,36 @@
                     <a class="dropdown-item" href="/logout">Wyloguj</a>
                 </div>
             </span>
+
+        <ul class="navbar-nav mr-auto d-block d-md-none">
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/szkolenia">Szkolenia</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/szablony">Szablony</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/tematy">Tematy</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/zadania">Zadania</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/opisy">Opisy</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/uzytkownicy">Użytkownicy</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/opinie">Opinie</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/strony">Strony</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/umowa">Umowa</a>
+            </li>
+        </ul>
     </div>
     <!-- Collapsible content -->
 
