@@ -22,7 +22,7 @@ public class HomeController {
 
     private AdminTrainerService adminTrainerService;
     private FaqService faqService;
-    public HomeController(TrainingService trainingService, OpinionService opinionService, AdminTrainerService adminTrainerService, FaqService faqService)) {
+    public HomeController(TrainingService trainingService, OpinionService opinionService, AdminTrainerService adminTrainerService, FaqService faqService) {
         this.trainingService = trainingService;
         this.opinionService = opinionService;
         this.adminTrainerService = adminTrainerService;
