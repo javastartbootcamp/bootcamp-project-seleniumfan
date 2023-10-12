@@ -13,7 +13,6 @@ import java.util.List;
 @Setter
 @Entity
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -39,7 +38,6 @@ public class User {
     private String activationCode;
 
     private LocalDateTime createdDate;
-
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.MERGE)
     private List<UserRole> roles;
