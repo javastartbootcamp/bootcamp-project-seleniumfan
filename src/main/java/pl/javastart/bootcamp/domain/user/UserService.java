@@ -166,6 +166,14 @@ public class UserService {
                 .anyMatch(role -> role.getRole().equals(Role.ROLE_ADMIN));
     }
 
+    public void assignAdminRole(Long userId) {
+        User user = findByIdOrThrow(userId);
+        UserRole userRole = new UserRole(user, Role.ROLE_ADMIN);
+        user.getRoles().add(userRole);
+        userRole.setUser(user);
+        update(user);
+    }
+
     public boolean isCurrentUserAdmin() {
         SecurityContext context = SecurityContextHolder.getContext();
         Authentication authentication = context.getAuthentication();

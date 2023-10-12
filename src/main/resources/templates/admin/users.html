@@ -28,7 +28,7 @@
             <td th:text="${user.firstName} + ' ' + ${user.lastName}"></td>
             <td th:text="${user.email}"></td>
             <td>
-                <form th:action="@{'/admin/uzytkownicy/' + ${user.id} + '/ustawRoleAdmina'}" method="post">
+                <form th:if="${!isAdminMap[user.id]}" th:action="@{'/admin/uzytkownicy/' + ${user.id} + '/ustawRoleAdmina'}" method="post">
                     <button type="submit">Ustaw rolę admina</button>
                 </form>
             </td>

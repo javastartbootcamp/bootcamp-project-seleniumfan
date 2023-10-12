@@ -40,7 +40,8 @@ public class User {
 
     private LocalDateTime createdDate;
 
-    @OneToMany(mappedBy = "user")
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.MERGE)
     private List<UserRole> roles;
 
     @OneToMany(mappedBy = "user")
