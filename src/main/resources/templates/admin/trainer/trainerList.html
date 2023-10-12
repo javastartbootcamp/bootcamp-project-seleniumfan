@@ -38,10 +38,14 @@
             <td th:text="${trainer.name}"></td>
             <td th:text="${trainer.description}"></td>
             <td>
-                <a th:href="'/admin/trenerzy/' + ${trainer.id} + '/edytuj'">Zmień dane</a>
+                <form method="post" th:action="'/admin/trenerzy/' + ${trainer.id} + '/edytuj'">
+                    <button type="submit">Zmień dane</button>
+                </form>
             </td>
             <td>
-                <a th:href="'/admin/trenerzy/' + ${trainer.id} + '/usun'">Usuń trenera</a>
+                <form method="post" th:action="'/admin/trenerzy/' + ${trainer.id} + '/usun'">
+                    <button type="submit">Usuń trenera</button>
+                </form>
             </td>
         </tr>
         </tbody>

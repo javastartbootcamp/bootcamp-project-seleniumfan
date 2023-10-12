@@ -30,7 +30,7 @@ public class AdminTrainerController {
         return "admin/trainer/trainer";
     }
 
-    @GetMapping("/admin/trenerzy/{id}/edytuj")
+    @PostMapping("/admin/trenerzy/{id}/edytuj")
     public String changeTrainerData(@PathVariable Long id, Model model) {
         Trainer trainer = adminTrainerService.findByIdOrThrow(id);
         model.addAttribute("trainer", trainer);
@@ -38,7 +38,7 @@ public class AdminTrainerController {
         return "admin/trainer/trainerAddOrEdit";
     }
 
-    @GetMapping("/admin/trenerzy/{id}/usun")
+    @PostMapping("/admin/trenerzy/{id}/usun")
     public String deleteTrainerData(@PathVariable Long id) {
         adminTrainerService.deleteById(id);
         return "redirect:/admin/trenerzy";
