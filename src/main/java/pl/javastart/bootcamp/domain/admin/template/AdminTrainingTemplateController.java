@@ -9,6 +9,7 @@ import pl.javastart.bootcamp.domain.training.lesson.lessonexcercise.LessonExerci
 import pl.javastart.bootcamp.domain.training.lesson.lessonexcercise.LessonExerciseService;
 import pl.javastart.bootcamp.domain.training.lesson.lessontask.LessonTask;
 import pl.javastart.bootcamp.domain.training.lesson.lessontask.LessonTaskService;
+import pl.javastart.bootcamp.utils.YoutubeUrls;
 
 import java.time.LocalTime;
 import java.util.Arrays;
@@ -82,7 +83,7 @@ public class AdminTrainingTemplateController {
         model.addAttribute("templateLesson", trainingTemplateLesson);
         model.addAttribute("topics", topicService.findAll());
         List<String> embeddedLinks = Arrays.stream(trainingTemplateLesson.getLesson().getVideoLinks().split("\n"))
-                .map(trainingTemplateService::mapToEmbed)
+                .map(YoutubeUrls::mapToEmbed)
                 .collect(Collectors.toList());
         model.addAttribute("embeddedLinks", embeddedLinks);
         return "admin/template/lesson/templateLesson";

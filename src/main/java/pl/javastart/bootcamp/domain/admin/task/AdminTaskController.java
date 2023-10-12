@@ -2,12 +2,12 @@ package pl.javastart.bootcamp.domain.admin.task;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import pl.javastart.bootcamp.domain.training.lesson.lessontask.LessonTaskService;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import pl.javastart.bootcamp.utils.YoutubeUrls;
 
 @Controller
 @RequestMapping("/admin/zadania")
@@ -29,7 +29,7 @@ public class AdminTaskController {
     public String previewTask(@PathVariable Long id, Model model) {
         Task task = taskService.findByIdOrThrow(id);
         model.addAttribute("task", task);
-        model.addAttribute("embeddedLinks", taskService.mapToEmbed(task.getSolutionVideo()));
+        model.addAttribute("embeddedLinks", YoutubeUrls.mapToEmbed(task.getSolutionVideo()));
         return "admin/task/task";
     }
 

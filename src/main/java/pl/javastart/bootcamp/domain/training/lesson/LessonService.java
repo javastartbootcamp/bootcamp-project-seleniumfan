@@ -73,18 +73,6 @@ public class LessonService {
         return lessonRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
     }
 
-    public String mapToEmbed(String link) {
-        if (link.startsWith("http")) {
-            if (link.contains("youtu.be")) {
-                return link.replace("youtu.be/", "www.youtube.com/embed/");
-            } else {
-                return link.replace("watch?v=", "embed/");
-            }
-        } else {
-            return "https://www.youtube.com/embed/" + link;
-        }
-    }
-
     public void deleteById(Long id) {
         lessonRepository.deleteById(id);
     }

@@ -32,8 +32,13 @@
             <input type="number" id="number" class="form-control" th:field="*{number}"/>
         </div>
         <div class="form-row">
-            <label for="videoLinks">Linki do filmów - tylko identyfikatory filmów z youtube (każdy w nowej
-                linii)</label>
+            <label for="videoLinks">Linki do filmów podane w jednej z form:<br />
+                <ul>
+                    <li>identyfikator np.: (wyrGeEIMrcc)</li>
+                    <li>"zwykły link" np.: https://www.youtube.com/watch?v=wyrGeEIMrcc</li>
+                    <li>link z udostępniania np.: https://youtu.be/wyrGeEIMrcc</li>
+                </ul>
+            </label>
             <textarea rows="3" id="videoLinks" class="form-control" th:field="*{videoLinks}"></textarea>
         </div>
         <div class="form-row">
