@@ -39,7 +39,7 @@
 
     <h5>Film z rozwiązaniem</h5>
     <div th:if="${!#strings.isEmpty(task.solutionVideo)}">
-        <iframe width="560" height="315" th:src="'https://www.youtube.com/embed/' + ${task.solutionVideo}" frameborder="0"
+        <iframe width="560" height="315" th:src="${embeddedLinks}" frameborder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
     </div>

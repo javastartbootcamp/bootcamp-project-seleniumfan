@@ -25,8 +25,8 @@
         </ul>
     </div>
 
-    <div th:each="video: ${lesson.videoLinks.split('\n')}">
-        <iframe th:if="${!#strings.isEmpty(video)}" th:src="|https://www.youtube.com/embed/${video}"
+    <div th:each="video: ${embeddedLinks}">
+        <iframe th:if="${!#strings.isEmpty(video)}" th:src="${video}"
                 width="560" height="315" frameborder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>

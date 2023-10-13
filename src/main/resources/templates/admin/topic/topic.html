@@ -30,8 +30,8 @@
         </ul>
     </div>
 
-    <div th:if="${!#strings.isEmpty(topic.videoLinks)}" th:each="video: ${topic.videoLinks.split('\n')}">
-        <iframe width="560" height="315" th:src="|https://www.youtube.com/embed/${video}" frameborder="0"
+    <div th:if="${!#strings.isEmpty(topic.videoLinks)}" th:each="video: ${embeddedLinks}">
+        <iframe width="560" height="315" th:src="${video}" frameborder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
     </div>

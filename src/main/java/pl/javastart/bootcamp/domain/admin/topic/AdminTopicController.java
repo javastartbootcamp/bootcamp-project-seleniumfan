@@ -6,8 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pl.javastart.bootcamp.utils.YoutubeUrls;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequestMapping("/admin/tematy")
 @Controller
@@ -30,6 +33,10 @@ public class AdminTopicController {
     public String previewTopic(@PathVariable Long id, Model model) {
         Topic topic = topicService.findByIdOrThrow(id);
         model.addAttribute("topic", topic);
+        List<String> embeddedLinks = Arrays.stream(topic.getVideoLinks().split("\n"))
+                .map(YoutubeUrls::mapToEmbed)
+                .collect(Collectors.toList());
+        model.addAttribute("embeddedLinks", embeddedLinks);
         return "admin/topic/topic";
     }
 

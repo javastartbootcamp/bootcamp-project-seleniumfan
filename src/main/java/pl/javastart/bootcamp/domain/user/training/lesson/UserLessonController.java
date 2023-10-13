@@ -10,9 +10,12 @@ import pl.javastart.bootcamp.domain.training.lesson.lessontask.LessonTaskService
 import pl.javastart.bootcamp.domain.user.User;
 import pl.javastart.bootcamp.domain.user.UserService;
 import pl.javastart.bootcamp.domain.user.training.lesson.task.TaskWithResultDto;
+import pl.javastart.bootcamp.utils.YoutubeUrls;
 
 import java.security.Principal;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class UserLessonController {
@@ -30,6 +33,10 @@ public class UserLessonController {
     @GetMapping("/konto/zajecia/{id}")
     public String lesson(@PathVariable Long id, Model model, Principal principal) {
         Lesson lesson = lessonService.findByIdOrThrow(id);
+        List<String> embeddedLinks = Arrays.stream(lesson.getVideoLinks().split("\n"))
+                .map(YoutubeUrls::mapToEmbed)
+                .collect(Collectors.toList());
+        model.addAttribute("embeddedLinks", embeddedLinks);
         model.addAttribute("lesson", lesson);
 
         User user = userService.findByEmailOrThrow(principal.getName());
