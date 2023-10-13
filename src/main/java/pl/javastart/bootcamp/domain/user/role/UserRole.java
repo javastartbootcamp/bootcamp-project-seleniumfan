@@ -1,10 +1,12 @@
 package pl.javastart.bootcamp.domain.user.role;
 
+import lombok.NoArgsConstructor;
 import pl.javastart.bootcamp.domain.user.User;
 
 import javax.persistence.*;
 
 @Entity
+@NoArgsConstructor
 public class UserRole {
 
     @Id
@@ -16,6 +18,11 @@ public class UserRole {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    public UserRole(User user, Role role) {
+        this.user = user;
+        this.role = role;
+    }
 
     public Long getId() {
         return id;
