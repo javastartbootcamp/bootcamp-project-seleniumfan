@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/admin}">
+
+<head>
+    <title th:text="|Trener: ${trainer.name}|">Trener</title>
+</head>
+
+<body>
+
+<div layout:fragment="admin-content" class="container">
+
+    <h3 th:text="|Trener: ${trainer.name}|"></h3>
+    <div>
+        <p th:text="${trainer.description}">
+            Opis
+        </p>
+    </div>
+    <br />
+    <a th:href="|/admin/trenerzy|">Powrót do listy trenerów</a><br/>
+
+    <a th:href="|/admin/trenerzy/${trainer.id}/edytuj|"><i class="fa fa-edit"></i>&nbsp;Edytuj trenera</a>
+
+
+
+</div>
+
+</body>
+</html>

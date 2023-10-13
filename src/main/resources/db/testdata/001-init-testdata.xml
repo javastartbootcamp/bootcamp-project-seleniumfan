@@ -170,6 +170,43 @@
             <column name="profile_url" value="https://www.linkedin.com/in/mateusz-hotowy-59b47a14b/"/>
         </insert>
 
+        <insert tableName="trainer">
+            <column name="id" value="1"/>
+            <column name="name" value="Sergiusz Mazan"/>
+            <column name="description" valueClobFile="./trainer/trainer_1.html"/>
+            <column name="image_url" value="/img/sergiusz_mazan.jpg"/>
+        </insert>
+        <insert tableName="trainer">
+            <column name="id" value="2"/>
+            <column name="name" value="Marcin Paluchowski"/>
+            <column name="description" valueClobFile="./trainer/trainer_2.html"/>
+            <column name="image_url" value="/img/marcin_paluchowski.jpg"/>
+        </insert>
+        <insert tableName="trainer">
+            <column name="id" value="3"/>
+            <column name="name" value="Sławek Ludwiczak"/>
+            <column name="description" valueClobFile="./trainer/trainer_3.html"/>
+            <column name="image_url" value="/img/slawek.jpg"/>
+        </insert>
+        <insert tableName="trainer">
+            <column name="id" value="4"/>
+            <column name="name" value="Marcin Kunert"/>
+            <column name="description" valueClobFile="./trainer/trainer_4.html"/>
+            <column name="image_url" value="/img/marcin.jpg"/>
+        </insert>
+        <insert tableName="trainer">
+            <column name="id" value="5"/>
+            <column name="name" value="Paweł Koper"/>
+            <column name="description" valueClobFile="./trainer/trainer_5.html"/>
+            <column name="image_url" value="/img/pawel_koper.jpg"/>
+        </insert>
+        <insert tableName="trainer">
+            <column name="id" value="6"/>
+            <column name="name" value="Ania Jaskot"/>
+            <column name="description" valueClobFile="./trainer/trainer_6.html"/>
+            <column name="image_url" value="/img/ania.jpg"/>
+        </insert>
+
         <loadData file="db/testdata/lesson/lesson.csv"
                   separator=";"
                   tableName="lesson"/>

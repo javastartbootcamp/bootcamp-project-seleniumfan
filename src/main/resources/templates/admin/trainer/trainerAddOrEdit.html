@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/admin}">
+
+<head>
+  <title>Trenerzy</title>
+</head>
+
+<body>
+
+<div layout:fragment="admin-content" class="container">
+
+  <h3>
+    <span th:if="${mode} == 'add'">Dodawanie trenera</span>
+    <span th:if="${mode} == 'edit'">Edycja trenera</span>
+  </h3>
+
+  <a th:href="|/admin/trenerzy|">Powrót do listy trenerów</a>
+
+  <form method="post" th:action="@{${mode == 'add' ? '/admin/trenerzy/dodaj' : '/admin/trenerzy/edytuj'}}" th:object="${trainer}">
+    <input type="hidden" th:field="*{id}"/>
+    <div class="form-row">
+      <label for="name">Imię i nazwisko</label>
+      <input type="text" id="name" class="form-control" th:field="*{name}"/>
+    </div>
+
+    <div class="form-row">
+      <label for="description">Opis</label>
+      <textarea rows="3" id="description" class="form-control" th:field="*{description}"></textarea>
+    </div>
+    <div class="form-row">
+      <label for="imageUrl">Link do zdjęcia</label>
+      <textarea rows="3" id="imageUrl" class="form-control" th:field="*{imageUrl}"></textarea>
+    </div>
+
+    <button class="btn btn-primary" type="submit">
+      <span th:if="${mode} == 'add'">Dodaj</span>
+      <span th:if="${mode} == 'edit'">Zapisz zmiany</span>
+    </button>
+  </form>
+
+</div>
+
+
+</body>
+</html>
